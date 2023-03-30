@@ -1,0 +1,111 @@
+/* Global Styles */
+body {
+  background-color: #659DBD;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.logo img {
+  height: 80px;
+  margin-right: 10px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 10;
+  padding: 0;
+}
+
+nav li {
+  margin: 0 50px;
+}
+
+nav a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  border-radius: 5px; /* add a border radius to create a rounded corner */
+  transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+  background-color: #eee;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* Form Styles */
+form {
+  background-color:#DAAD86;
+  width: 700px;
+  margin: 50px auto;
+  margin-top: 10px;
+  border: 2px solid #333;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+
+}
+
+input[type="number"],
+select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+button#submit-btn {
+
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  border-radius: 5px; /* add a border radius to create a rounded corner */
+  transition: all 0.3s ease-in-out;
+}
+
+
+#submit-btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+
+#result {
+  background-color:#DAAD86;
+  width: 700px;
+  margin: 50px auto;
+  border: 2px solid #333;
+  padding: 20px;
+  border-radius: 10px;
+  display: none;
+}

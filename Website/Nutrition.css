@@ -1,0 +1,83 @@
+/* Global Styles */
+body {
+  background-color: #659DBD;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.logo img {
+  height: 100px;
+  margin-right: 10px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 10;
+  padding: 0;
+}
+
+nav li {
+  margin: 0 50px;
+}
+
+nav a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  border-radius: 5px; /* add a border radius to create a rounded corner */
+  transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+  background-color: #eee;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 5px;
+}
+
+ol li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  font-size: 20px;
+
+}
+
+/* Form Styles */
+form {
+  background-color: #F5DEB3;
+  width: 700px;
+  margin: 50px auto;
+  margin-top: 10px;
+  border: 2px solid #333;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  color: #333;
+}

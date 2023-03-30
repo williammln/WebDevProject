@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BMI Tracker</title>
+	<link rel="stylesheet" href="bmi.css">
+</head>
+<header>
+    <div class="logo">
+      <img src="Logo2.png" alt="Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="Home.php">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Log In</a></li>
+      </ul>
+    </nav>
+  </header>
+<body>
+	<h1>BMI Tracker</h1>
+	<div class="form">
+
+	<div class="bmi-input">
+		<label>Height (in cm):</label>
+		<input type="number" id="height" min="1" max="300" required>
+	</div>
+
+	<div class="bmi-input">
+		<label>Weight (in kg):</label>
+		<input type="number" id="weight" min="1" max="500" required>
+	</div>
+
+	<button id="calculate-btn" onclick="calculateBMI()">Calculate BMI</button>
+	</div>
+	<div class="result-container">
+	    <h2>Your BMI:</h2>
+	    <div id="bmi-result"></div>
+
+	    <div id="bmi-indicator"></div>
+  	</div>
+	<script src="bmi.js"></script>
+</body>
+</html>
