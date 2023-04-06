@@ -2,48 +2,56 @@
 session_start();
 
 if (isset($_POST['logout'])) {
-  session_destroy();
-  header("Location: login.php");
-  exit;
+    session_destroy();
+    header("Location: login.php");
+    exit;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Retrieve form data
-  $email = $_POST["email"];
-  $password = $_POST["password"];
+    // Retrieve form data
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
-  // Validate form data
-  // (You may want to add more detailed validation logic here)
-  if (empty($email) || empty($password)) {
-    echo "Please enter email and password";
-    exit;
-  }
+    // Validate form data
+    if (empty($email) || empty($password)) {
+        echo "Please enter email and password";
+        exit;
+    }
 
-  // Connect to database
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "fitverse_db";
+    // Connect to database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "fitverse_db";
 
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-  // Check if user exists and password is correct
-  $sql = "SELECT * FROM users WHERE Email='$email' AND Password='$password'";
-  $result = $conn->query($sql);
-  if ($result->num_rows == 1) {
-    // Login successful, set session variable
-    $_SESSION["email"] = $email;
-    header("Location: Home.php");
-    exit;
-  }
+    // CHANGED: Use prepared statement to avoid SQL injection
+    $stmt = $conn->prepare("SELECT Password FROM users WHERE Email=?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-  echo "Invalid login credentials";
-  $conn->close();
+    // Check if user exists and password is correct
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        // CHANGED: Verify the password using password_verify
+        if (password_verify($password, $row['Password'])) {
+            // Login successful, set session variable
+            $_SESSION["email"] = $email;
+            header("Location: Home.php");
+            exit;
+        }
+    }
+
+    echo "Invalid login credentials";
+    $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
