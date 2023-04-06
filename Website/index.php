@@ -8,7 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $password = $_POST["password"];
 
   // Validate form data
-  // (You may want to add more detailed validation logic here)
   if (empty($email) || empty($fname) || empty($lname) || empty($age) || empty($password)) {
     echo "Please fill out all fields";
     exit;
@@ -33,9 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
   }
 
+  // CHANGED: Hash the password before storing it in the database
+  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
   // Insert user data into database
   $sql = "INSERT INTO users (Email, FName, LName, Age, Password)
-          VALUES ('$email', '$fname', '$lname', '$age', '$password')";
+          VALUES ('$email', '$fname', '$lname', '$age', '$hashed_password')";
 
   if ($conn->query($sql) === TRUE) {
     echo "Registration successful";
@@ -46,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
